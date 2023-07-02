@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-export class Form extends Component {
+export class ContactForm extends Component {
   state = {
     name: '',
     number: '',
@@ -21,14 +21,13 @@ export class Form extends Component {
 
   reset = () => {
     this.setState({ name: '', number: ''});
-    console.log(this.state);
+    // console.log(this.state);
 }
 
   render() {
     return (
       <>
-        <>
-          <h2>Phonebook</h2>
+        
           <form onSubmit={this.handleSubmit}>
             <label>
               Name
@@ -50,7 +49,7 @@ export class Form extends Component {
             </label>
             <button type="submit">Add contact</button>
           </form>
-        </>
+        
       </>
     );
   }

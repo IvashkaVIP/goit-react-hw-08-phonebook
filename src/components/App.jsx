@@ -12,7 +12,7 @@ export class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    filter: '',    
+    filter: '',
   };
 
   changeFilter = evt => {
@@ -20,24 +20,29 @@ export class App extends Component {
   };
 
   formSubmitHandler = ({ name, number }) => {
+  
+    if (this.state.contacts.find(i => i.name === name)) {
+      alert(`${name}  is already in contacts.`);
+      return;
+    }
+
     const contact = { number, name, id: nanoid() };
     this.setState(({ contacts }) => ({
       contacts: [contact, ...contacts],
     }));
   };
 
-  getVisibleContacts = ({filter, contacts}) => {
-    
+  getVisibleContacts = () => {
+    const { filter, contacts } = this.state;
     const normalizeFilter = filter.toLowerCase();
-    return contacts.filter(item => 
-    item.name.toLowerCase().includes(normalizeFilter),
+    return contacts.filter(item =>
+      item.name.toLowerCase().includes(normalizeFilter)
     );
-    
-  }
+  };
 
   render() {
     const { contacts, filter } = this.state;
-    const visibleContacts = this.getVisibleContacts(this.state);
+    const visibleContacts = this.getVisibleContacts();
 
     return (
       <div>
@@ -48,10 +53,6 @@ export class App extends Component {
         <Filter value={filter} onChange={this.changeFilter} />
 
         <ContactList contacts={visibleContacts} />
-
-        {/* <h2>Contacts</h2>
-  <Filter ... />
-  <ContactList ... />  */}
       </div>
     );
   }

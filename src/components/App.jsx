@@ -20,8 +20,7 @@ export class App extends Component {
   };
 
   formSubmitHandler = ({ name, number }) => {
-  
-    if (this.state.contacts.find(i => i.name === name)) {
+    if (this.state.contacts.find(item => item.name === name)) {
       alert(`${name}  is already in contacts.`);
       return;
     }
@@ -40,6 +39,12 @@ export class App extends Component {
     );
   };
 
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   render() {
     const { contacts, filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
@@ -52,7 +57,7 @@ export class App extends Component {
 
         <Filter value={filter} onChange={this.changeFilter} />
 
-        <ContactList contacts={visibleContacts} />
+        <ContactList contacts={visibleContacts} onDeleteContact={this.deleteContact} />
       </div>
     );
   }

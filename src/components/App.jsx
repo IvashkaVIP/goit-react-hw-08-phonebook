@@ -5,9 +5,14 @@ export class App extends Component {
   state = {
     contacts: [],
     name: '',
-    tag: '',
+    number: '',
   };
 
+
+  handleSubmit = evt => {
+    evt.preventDefault();
+    console.log(this.state);
+}
   handleChange = evt => {
     const { name, value } = evt.currentTarget;
     this.setState({ [name]: value });
@@ -19,7 +24,7 @@ export class App extends Component {
       <>
         <>
           <h2>Phonebook</h2>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <label>
               Name
               <input
@@ -33,11 +38,12 @@ export class App extends Component {
               Number
               <input
                 type="text"
-                name="tag"
+                name="number"
                 value={this.state.tag}
                 onChange={this.handleChange}
               ></input>
             </label>
+            <button type="submit">Add contact</button>
           </form>
         </>
       </>

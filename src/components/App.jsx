@@ -12,10 +12,11 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     name: '',
+    number: '',
   };
 
-  formSubmitHandler = ({name}) => {
-    const contact = { name: name, id: nanoid() };
+  formSubmitHandler = ({name, number}) => {
+    const contact = { number, name, id: nanoid() };
     this.setState(prevState => ({
       contacts: [contact, ...prevState.contacts],
 

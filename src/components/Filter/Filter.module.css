@@ -1,0 +1,8 @@
+.find {
+    display: flex;
+}
+.find-text {
+    margin-right: 40px;
+    font-style: italic;
+}
+

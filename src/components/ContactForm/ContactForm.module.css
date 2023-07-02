@@ -1,0 +1,13 @@
+.form {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.label {
+    font-style: italic;
+}
+
+.input {
+    margin-top: 5px;
+}

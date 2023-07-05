@@ -16,6 +16,17 @@ export class App extends Component {
     filter: '',
   };
 
+  componentDidUpdate(prevProps, prevState) {
+  
+    console.log(this.state.contacts);
+    console.log(prevState.contacts);
+    if (this.state.contacts !== prevState.contacts) {
+      console.log('Обновился State');
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+
+}
+
   changeFilter = evt => {
     this.setState({ filter: evt.currentTarget.value });
   };

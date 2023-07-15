@@ -22,18 +22,36 @@ const [contacts, setContacts] = useState(
      }
      setContacts(prev => [{ number, name, id: nanoid() }, ...prev]);
    };
-  console.log(contacts);
+  
+  const changeFilter = evt => {
+    setFilter(evt.target.value);
+  };
+
+  const deleteContact = contactId => {
+      setContacts(prevState => (
+      prevState.filter(contact => contact.id !== contactId)
+    ));
+  };
+
+  const getVisibleContacts = () => {
+      // const { filter, contacts } = this.state;
+      const normalizeFilter = filter.toLowerCase();
+      return contacts.filter(item =>
+        item.name.toLowerCase().includes(normalizeFilter)
+      );
+    };
 
   return (
     <div className={css.container}>
       <h1>Phonebook</h1>
       <ContactForm onSubmit={formSubmitHandler} />
       <h1>Contacts </h1>
-      {/* <Filter value={filter} onChange={this.changeFilter} />
+      <Filter value={filter} onChange={changeFilter} />
       <ContactList
-        contacts={visibleContacts}
-        onDeleteContact={this.deleteContact}
-      /> */}
+        contacts={getVisibleContacts()}
+        // contacts={contacts}
+        onDeleteContact={deleteContact}
+      />
     </div>
   );
 }

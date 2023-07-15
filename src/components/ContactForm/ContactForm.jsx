@@ -1,22 +1,11 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
-import { useState, useEffect } from 'react';
 import css from './ContactForm.module.css';
+import { useLocalStorage } from 'components/Hooks/UseLocalStorage';
 
 export const ContactForm = ({ onSubmit }) => {
-  const [name, setName] = useState(() => {
-    return JSON.parse(window.localStorage.getItem('name')) ?? '';
-  });
-  const [number, setNumber] = useState(() => {
-    return JSON.parse(window.localStorage.getItem('number')) ?? '';
-  });
-
-  useEffect(() => {
-    window.localStorage.setItem('name', JSON.stringify(name));
-  }, [name]);
-  useEffect(() => {
-    window.localStorage.setItem('number', JSON.stringify(number));
-  }, [number]);
+  const [name, setName] = useLocalStorage('name', '');
+  const [number, setNumber] = useLocalStorage('number', '');
 
   const handleSubmit = evt => {
     evt.preventDefault();

@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import css from './ContactForm.module.css';
 
 export const ContactForm = ({ onSubmit }) => {
-  const [name, setName] = useState(
-    JSON.parse(window.localStorage.getItem('name')) ?? ''
-  );
-  const [number, setNumber] = useState(
-    JSON.parse(window.localStorage.getItem('number')) ?? ''
-  );
+  const [name, setName] = useState(() => {
+    return JSON.parse(window.localStorage.getItem('name')) ?? '';
+  });
+  const [number, setNumber] = useState(() => {
+    return JSON.parse(window.localStorage.getItem('number')) ?? '';
+  });
 
   useEffect(() => {
     window.localStorage.setItem('name', JSON.stringify(name));

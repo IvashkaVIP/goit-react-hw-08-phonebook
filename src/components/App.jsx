@@ -34,7 +34,6 @@ const [contacts, setContacts] = useState(
   };
 
   const getVisibleContacts = () => {
-      // const { filter, contacts } = this.state;
       const normalizeFilter = filter.toLowerCase();
       return contacts.filter(item =>
         item.name.toLowerCase().includes(normalizeFilter)
@@ -49,19 +48,11 @@ const [contacts, setContacts] = useState(
       <Filter value={filter} onChange={changeFilter} />
       <ContactList
         contacts={getVisibleContacts()}
-        // contacts={contacts}
         onDeleteContact={deleteContact}
       />
     </div>
   );
 }
-
-
-
-
-
-
-
 
 
 //---------------------------------------------------------------------------------------------

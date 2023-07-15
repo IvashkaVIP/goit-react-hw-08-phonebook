@@ -8,7 +8,7 @@ import css from './App.module.css';
 export const App = () => {
   const [contacts, setContacts] = useState(() => {
     // ----------------------------------lazy state initilization
-    const local = JSON.parse(window.localStorage.getItem('contacts'));
+    const local = JSON.parse(window.localStorage.getItem('contacts')) ?? [];
 
     if (!local.length)
       return [

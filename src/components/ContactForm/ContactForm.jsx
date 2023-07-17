@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 import css from './ContactForm.module.css';
-import { useLocalStorage } from 'components/Hooks/UseLocalStorage';
+import { useLocalStorage } from 'hooks/useLocalStorage';
 
 export const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useLocalStorage('name', '');

@@ -3,6 +3,7 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { nanoid } from 'nanoid';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
+import {TestComponent} from './TestComponent/TestComponent'
 import css from './App.module.css';
 
 export const App = () => {
@@ -61,6 +62,9 @@ export const App = () => {
         contacts={getVisibleContacts()}
         onDeleteContact={deleteContact}
       />
+
+      <TestComponent></TestComponent>
+
     </div>
   );
 };

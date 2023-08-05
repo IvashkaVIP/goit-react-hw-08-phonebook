@@ -5,7 +5,7 @@ import { addContact } from 'redux/contacts/slice';
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts);
-
+  
   const handleSubmit = evt => {
     evt.preventDefault();
     const form = evt.currentTarget.elements;

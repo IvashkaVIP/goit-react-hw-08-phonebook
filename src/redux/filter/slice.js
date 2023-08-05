@@ -6,7 +6,7 @@ export const filterSlice = createSlice({
   reducers: {
     filterQuery(state, action) {
       return action.payload;
-    }
+    },
   },
 });
 

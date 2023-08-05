@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/slice';
 
 export const ContactForm = () => {
-
   const dispatch = useDispatch();
-  const contacts = useSelector(state=>state.contacts);
+  const contacts = useSelector(state => state.contacts);
 
   const handleSubmit = evt => {
     evt.preventDefault();
@@ -13,7 +12,8 @@ export const ContactForm = () => {
     const name = form.name.value;
     const number = form.number.value;
     if (contacts.find(contact => contact.name === name)) {
-      alert(`${name} is already in contacts.`); evt.currentTarget.reset();
+      alert(`${name} is already in contacts.`);
+      evt.currentTarget.reset();
       return;
     }
     dispatch(addContact(name, number));
@@ -50,4 +50,3 @@ export const ContactForm = () => {
     </div>
   );
 };
-

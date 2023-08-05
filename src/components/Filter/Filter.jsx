@@ -6,9 +6,10 @@ import { filterQuery } from 'redux/filter/slice';
 export const Filter = () => {
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
-  const onChange = evt => { dispatch(filterQuery(evt.target.value)) };
-  // console.log(filter);  
- return (
+  const onChange = evt => {
+    dispatch(filterQuery(evt.target.value));
+  };
+  return (
     <label className={css.find}>
       <div className={css['find-text']}> Find contacts by name</div>
       <input type="text" value={filter.payload} onChange={onChange} />

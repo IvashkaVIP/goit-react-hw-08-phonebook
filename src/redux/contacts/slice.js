@@ -40,3 +40,5 @@ const rootReducer = combineReducers({
 
 export const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const { addContact, deleteContact } = contactsSlice.actions;
+
+export const getContacts = state => state.contacts;

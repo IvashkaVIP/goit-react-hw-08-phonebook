@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ContactForm } from './ContactForm/ContactForm';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import {TestComponent} from './TestComponent/TestComponent'
@@ -27,23 +27,23 @@ export const App = () => {
     window.localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
-  const formSubmitHandler = ({ name, number }) => {
-    if (contacts.find(item => item.name === name)) {
-      alert(`${name} is already in contacts.`);
-      return;
-    }
-    setContacts(prev => [{ number, name, id: nanoid() }, ...prev]);
-  };
+  // const formSubmitHandler = ({ name, number }) => {
+  //   if (contacts.find(item => item.name === name)) {
+  //     alert(`${name} is already in contacts.`);
+  //     return;
+  //   }
+  //   setContacts(prev => [{ number, name, id: nanoid() }, ...prev]);
+  // };
 
   const changeFilter = evt => {
     setFilter(evt.target.value);
   };
 
-  const deleteContact = contactId => {
-    setContacts(prevState =>
-      prevState.filter(contact => contact.id !== contactId)
-    );
-  };
+  // const deleteContact = contactId => {
+  //   setContacts(prevState =>
+  //     prevState.filter(contact => contact.id !== contactId)
+  //   );
+  // };
 
   const getVisibleContacts = () => {
     const normalizeFilter = filter.toLowerCase();
@@ -55,12 +55,12 @@ export const App = () => {
   return (
     <div className={css.container}>
       <h1>Phonebook</h1>
-      <ContactForm onSubmit={formSubmitHandler} />
+      <ContactForm />
       <h1>Contacts </h1>
       <Filter value={filter} onChange={changeFilter} />
       <ContactList
-        contacts={getVisibleContacts()}
-        onDeleteContact={deleteContact}
+        // contacts={getVisibleContacts()}
+        // onDeleteContact={deleteContact}
       />
 
       <TestComponent></TestComponent>

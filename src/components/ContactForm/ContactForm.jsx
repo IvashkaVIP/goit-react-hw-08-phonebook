@@ -1,6 +1,7 @@
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, getContacts } from 'redux/contacts/contactsSlice';
+import { getContacts } from 'redux/contacts/contactsSlice';
+import { addContact} from '../../redux/contacts/contactsOperations';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -10,13 +11,13 @@ export const ContactForm = () => {
     evt.preventDefault();
     const form = evt.currentTarget.elements;
     const name = form.name.value;
-    const number = form.number.value;
+    const phone = form.phone.value;
     if (contacts.find(contact => contact.name === name)) {
       alert(`${name} is already in contacts.`);
       evt.currentTarget.reset();
       return;
     }
-    dispatch(addContact(name, number));
+    dispatch(addContact({ name, phone }));
     evt.currentTarget.reset();
   };
 
@@ -39,7 +40,7 @@ export const ContactForm = () => {
           <input
             className={css.input}
             type="tel"
-            name="number"
+            name="phone"
             pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required

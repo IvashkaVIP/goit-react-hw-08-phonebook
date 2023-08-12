@@ -1,25 +1,64 @@
 import { createSlice} from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
-import { fetchContacts } from './contactsOperations';
+// import { nanoid } from 'nanoid';
+import { fetchContacts, addContact } from './contactsOperations';
 
 export const contactsSlice = createSlice({
   name: 'allContacts',
   initialState: { contacts: [], isLoading: false, error: null },
   extraReducers: {
-    [fetchContacts.pending]: (state, action) => {
+    [fetchContacts.pending]: (state) => {
       return { ...state, isLoading: true };
     },
     [fetchContacts.fulfilled]: (state, action) => {
-      return { ...state, contacts: action.payload };
+      return { ...state, contacts: action.payload, isLoading: false };
     },
     // [fetchContacts.fulfilled] (state, action) { state.contacts = action.payload },
-    [fetchContacts.reject]: (state, action) => {
-      return { ...state, error: true };
+    [fetchContacts.reject]: (state) => {
+      return { ...state, isLoading: false, error: true };
+    },
+//--------------------------------------------------------------------
+    [addContact.pending] (state) {
+      state.isLoading = true;
+    },
+    [addContact.fulfilled] (state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.contacts.unshift(action.payload);
+    },
+    [addContact.rejected] (state, action) {
+      console.log('Rejected');
+       state.isLoading = false;
+       state.error = action.payload;
     },
   },
 });
+// [addContact.pending]: (state)=> {
+//       return { ...state, isLoading: true };
+//       // state.isLoading = true;
+//     },
+//     [addContact.fulfilled]: (state, action) => {
+//        return {
+//         ...state,
+//         contacts: action.payload,
+//         isLoading: false,
+//         error: null,
+//       };
+//       // state.isLoading = false;
+//       // state.error = null;
+//       // state.contacts.unshift(action.payload);
+//     },
+//     [addContact.rejected]: (state, action) => {
+//       console.log('Rejected');
+//       return {
+//         ...state,
+//         isLoading: false,
+//         error: action.payload,
+//       };
+//       // state.isLoading = false;
+//       // state.error = action.payload;
+//     },
 
-
+//--------------------------------------------------------------------------------------------------
 // export const contactsSlice = createSlice({
 //   name: 'contacts',
 //   initialState: [
@@ -43,7 +82,7 @@ export const contactsSlice = createSlice({
 //   },
 // });
 
-export const { addContact, deleteContact } = contactsSlice.actions;
+// export const { addContact, deleteContact } = contactsSlice.actions;
 
 export const getContacts = state => state.allContacts.contacts;
 export const getIsLoading = state => state.allContacts.isLoading;

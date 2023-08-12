@@ -35,6 +35,18 @@ export const addContact = createAsyncThunk(
     }
   }
 );
+
+export const deleteContact = createAsyncThunk(
+  'contacts/deleteContact',
+  async (contactId, thunkAPI) => {
+    try {
+      const response = await contactsAPI.deleteContact(contactId);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 // export const fetchContacts = async dispatch => {
 //   dispatch(contactsActions.fetchBooksRequest());
 

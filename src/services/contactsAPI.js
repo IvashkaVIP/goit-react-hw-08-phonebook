@@ -15,3 +15,8 @@ export const addContact = async ({
     return resp;
 }
 
+export const deleteContact = async (id) => {
+  const resp = await axios.delete(`/${id}`, { id });
+  return resp;
+};
+

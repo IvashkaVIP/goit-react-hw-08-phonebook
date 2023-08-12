@@ -1,7 +1,8 @@
 // import PropTypes from 'prop-types';
 // import {useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
-import { deleteContact, getContacts } from 'redux/contacts/contactsSlice';
+import { getContacts } from 'redux/contacts/contactsSlice';
+import {deleteContact} from 'redux/contacts/contactsOperations'
 import { getFilter } from 'redux/filter/filterSlice';
 // import { fetchContacts } from '../../redux/contacts/contactsOperations';
 import css from './ContactList.module.css';
@@ -26,7 +27,7 @@ export const ContactList = () => {
           <p className={css['list-item']}>
             {name}: {phone}
           </p>
-          {/* <button onClick={() => dispatch(deleteContact(id))}>Delete</button> */}
+          <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
         </li>
       ))}
     </ul>

@@ -1,7 +1,7 @@
 // import PropTypes from 'prop-types';
 import css from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterQuery, getFilter } from 'redux/filter/slice';
+import { filterQuery, getFilter } from 'redux/filter/filterSlice';
 
 export const Filter = () => {
   const filter = useSelector(getFilter);

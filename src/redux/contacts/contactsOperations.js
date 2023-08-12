@@ -1,14 +1,30 @@
-import * as contactsAPI from '../../services/contactsAPI';
-import * as contactsActions from '../contacts/contactsActions';
+import * as contactsAPI from 'services/contactsAPI';
+//import * as contactsActions from 'contacts/contactsActions';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchBooks = async dispatch => {
-  dispatch(contactsActions.fetchBooksRequest());
 
-  try {
-    const contacts = contactsAPI.fetchContacts();
-    dispatch(contactsActions.fetchContactsSuccess);
-  } catch (error) {
-    dispatch(contactsActions.fetchContactsError);
+export const fetchContacts = createAsyncThunk(
+  'contacts/fetchContacts',
+  async () => {
+    try {
+        const resp = await contactsAPI.fetchContactsAPI();
+      console.log('resp   ', resp);
+      return resp.data;
+        
+    } catch (error) {
+      return error;
+    }
   }
+);
 
-};
+// export const fetchContacts = async dispatch => {
+//   dispatch(contactsActions.fetchBooksRequest());
+
+//   try {
+//     const contacts = contactsAPI.fetchContacts();
+//     dispatch(contactsActions.fetchContactsSuccess);
+//   } catch (error) {
+//     dispatch(contactsActions.fetchContactsError);
+//   }
+
+// };

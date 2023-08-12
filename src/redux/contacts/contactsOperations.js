@@ -4,11 +4,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 
 export const fetchContacts = createAsyncThunk(
-  'contacts/fetchContacts',
+  'contacts/fetchAlls',
   async () => {
     try {
         const resp = await contactsAPI.fetchContactsAPI();
-      console.log('resp   ', resp);
+      console.log('resp   ', resp.data);
       return resp.data;
         
     } catch (error) {

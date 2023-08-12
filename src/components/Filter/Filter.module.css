@@ -1,5 +1,6 @@
 .find {
     display: flex;
+    margin-bottom: 20px;
 }
 .find-text {
     margin-right: 40px;

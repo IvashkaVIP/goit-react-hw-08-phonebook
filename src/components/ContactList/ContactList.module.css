@@ -1,7 +1,7 @@
 .list {
     display: flex;
     justify-content: space-between;
-    margin: 30px auto;
+    margin: 10px auto;
     width: 300px;
 }
 

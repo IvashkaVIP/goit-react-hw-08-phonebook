@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import { fetchContacts } from './contactsOperations';
 
 export const contactsSlice = createSlice({
-  name: 'contacts',
+  name: 'allContacts',
   initialState: { contacts: [], isLoading: false, error: null },
   extraReducers: {
     [fetchContacts.pending]: (state, action) => {
@@ -12,6 +12,7 @@ export const contactsSlice = createSlice({
     [fetchContacts.fulfilled]: (state, action) => {
       return { ...state, contacts: action.payload };
     },
+    // [fetchContacts.fulfilled] (state, action) { state.contacts = action.payload },
     [fetchContacts.reject]: (state, action) => {
       return { ...state, error: true };
     },
@@ -43,4 +44,7 @@ export const contactsSlice = createSlice({
 // });
 
 export const { addContact, deleteContact } = contactsSlice.actions;
-export const getContacts = state => state.contacts;
+
+export const getContacts = state => state.allContacts.contacts;
+export const getIsLoading = state => state.allContacts.isLoading;
+export const getError = state => state.allContacts.error;

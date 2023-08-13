@@ -1,11 +1,11 @@
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/contacts/contactsSlice';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
 import { addContact} from '../../redux/contacts/contactsOperations';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = evt => {
     evt.preventDefault();

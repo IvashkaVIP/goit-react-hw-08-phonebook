@@ -1,5 +1,4 @@
 import * as contactsAPI from 'services/contactsAPI';
-//import * as contactsActions from 'contacts/contactsActions';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 
@@ -46,14 +45,3 @@ export const deleteContact = createAsyncThunk(
     }
   }
 );
-// export const fetchContacts = async dispatch => {
-//   dispatch(contactsActions.fetchBooksRequest());
-
-//   try {
-//     const contacts = contactsAPI.fetchContacts();
-//     dispatch(contactsActions.fetchContactsSuccess);
-//   } catch (error) {
-//     dispatch(contactsActions.fetchContactsError);
-//   }
-
-// };

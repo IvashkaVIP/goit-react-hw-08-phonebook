@@ -1,10 +1,8 @@
-// import PropTypes from 'prop-types';
-// import {useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
-import { getContacts } from 'redux/contacts/contactsSlice';
-import {deleteContact} from 'redux/contacts/contactsOperations'
-import { getFilter } from 'redux/filter/filterSlice';
-// import { fetchContacts } from '../../redux/contacts/contactsOperations';
+import { deleteContact } from 'redux/contacts/contactsOperations'
+import {selectContacts} from 'redux/contacts/contactsSelectors'
+import { selectFilter } from 'redux/filter/filterSelectors';
+import { MdClose } from 'react-icons/md';
 import css from './ContactList.module.css';
 
 const getVisibleContacts = (contacts, filter) => {
@@ -16,8 +14,8 @@ const getVisibleContacts = (contacts, filter) => {
 
 export const ContactList = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
   const visibleContacts = getVisibleContacts(contacts, filter);
     
   return (
@@ -27,7 +25,9 @@ export const ContactList = () => {
           <p className={css['list-item']}>
             {name}: {phone}
           </p>
-          <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
+          <button className={css['btn-delete']} onClick={() => dispatch(deleteContact(id))}>
+            <MdClose size={24} />
+          </button>
         </li>
       ))}
     </ul>

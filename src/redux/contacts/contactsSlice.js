@@ -1,19 +1,10 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-// import { nanoid } from 'nanoid';
+import { createSlice } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from './contactsOperations';
-
-const handlePending = state => {
-  state.isLoading = true;
-  state.error = null;
-};
-const handleFulfilled = (state, action) => {
-  state.contacts = action.payload;
-  state.isLoading = false;
-};
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
+import {
+  handlePending,
+  handleFulfilled,
+  handleRejected,
+} from './contactsHandlers';
 
 export const contactsSlice = createSlice({
   name: 'allContacts',
@@ -22,6 +13,7 @@ export const contactsSlice = createSlice({
     builder
       .addCase(fetchContacts.fulfilled, handleFulfilled)
       .addCase(addContact.fulfilled, (state, action) => {
+        // console.log(action.type)
         state.isLoading = false;
         state.error = null;
         state.contacts.unshift(action.payload);
@@ -34,28 +26,11 @@ export const contactsSlice = createSlice({
         );
         state.contacts.splice(index, 1);
       })
-      .addMatcher(
-        isAnyOf(
-          fetchContacts.pending,
-          addContact.pending,
-          deleteContact.pending
-          ),
-        handlePending
-      )
-      .addMatcher(
-        isAnyOf(
-          fetchContacts.rejected,
-          addContact.rejected,
-          deleteContact.rejected
-        ),
-        handleRejected
-      );
+      .addMatcher(action => action.type.endsWith('/pending'), handlePending)
+      .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },
 });
 
-export const getContacts = state => state.allContacts.contacts;
-export const getIsLoading = state => state.allContacts.isLoading;
-export const getError = state => state.allContacts.error;
 // {
 //   [fetchContacts.pending] : (state) => {
 //     state.isLoading = true

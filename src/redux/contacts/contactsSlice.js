@@ -6,15 +6,19 @@ export const contactsSlice = createSlice({
   name: 'allContacts',
   initialState: { contacts: [], isLoading: false, error: null },
   extraReducers: {
-    [fetchContacts.pending]: state => {
-      return { ...state, isLoading: true };
+    [fetchContacts.pending](state) {
+      state.isLoading = true;
     },
-    [fetchContacts.fulfilled]: (state, action) => {
-      return { ...state, contacts: action.payload, isLoading: false };
+    [fetchContacts.fulfilled] (state, action){
+      state.contacts = action.payload;
+      state.isLoading = false;
+      // console.log('fetch fulfilled: ')
+      // console.log('fetch fulfilled action.payload: ', action.payload);
+      // console.log('fetch fulfilled state.contacts: ', state.contacts);
     },
-    // [fetchContacts.fulfilled] (state, action) { state.contacts = action.payload },
-    [fetchContacts.reject]: state => {
-      return { ...state, isLoading: false, error: true };
+    [fetchContacts.reject] (state) {
+      state.isLoading = false;
+      state.error = true;
     },
     //--------------------------------------------------------------------
     [addContact.pending](state) {
@@ -48,6 +52,12 @@ export const contactsSlice = createSlice({
     //---------------------------------------------------------------------
   },
 });
+
+export const getContacts = state => state.allContacts.contacts;
+export const getIsLoading = state => state.allContacts.isLoading;
+export const getError = state => state.allContacts.error;
+
+
 //  [fetchContacts.pending]: (state) => {
 //       return { ...state, isLoading: true };
 //     },
@@ -111,6 +121,3 @@ export const contactsSlice = createSlice({
 
 // export const { addContact, deleteContact } = contactsSlice.actions;
 
-export const getContacts = state => state.allContacts.contacts;
-export const getIsLoading = state => state.allContacts.isLoading;
-export const getError = state => state.allContacts.error;

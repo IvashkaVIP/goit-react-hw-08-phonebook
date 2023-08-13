@@ -10,8 +10,7 @@ export const addContact = async ({
  const resp = await axios.post('', {
         createdAt, name, phone, id,
  });
-    console.log(createdAt, '  ', name, '  ', phone, '  ', id);
-    console.log(Date.now().toString());
+    // console.log(createdAt, '  ', name, '  ', phone, '  ', id);
     return resp;
 }
 

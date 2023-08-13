@@ -8,7 +8,7 @@ export const fetchContacts = createAsyncThunk(
   'contacts/fetchAlls',
   async () => {
     try {
-        const resp = await contactsAPI.fetchContacts();
+      const resp = await contactsAPI.fetchContacts();
       //console.log('resp   ', resp.data);
       return resp.data;
         
@@ -23,7 +23,6 @@ export const addContact = createAsyncThunk(
   async ({ name, phone }, thunkAPI) => {
     try {
         const response = await contactsAPI.addContact({
-          // createdAt: (Date.now()).toJSON(),
           createdAt: Date.now(),
           name,
           phone,

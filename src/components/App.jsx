@@ -23,6 +23,7 @@ export const App = () => {
       <h1>Contacts </h1>
       <Filter />
       {isLoading && !error && <b>Request in progress...</b>}
+      {error && <b className={css.error}>Something wrong... {error}</b>}
       <ContactList />
     </div>
   );

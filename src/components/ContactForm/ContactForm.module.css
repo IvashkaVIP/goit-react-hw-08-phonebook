@@ -1,18 +1,17 @@
 .form {
-    display: flex;
-    justify-content: space-between;
-    /* align-items: end; */
+  display: flex;
+  justify-content: space-between;
 }
 
 .label {
-    font-style: italic;
+  font-style: italic;
 }
 
 .input {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
-.btn{
+.btn {
   display: inline-flex;
   padding: 8px 12px;
   border-radius: 4px;

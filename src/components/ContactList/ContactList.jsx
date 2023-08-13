@@ -22,10 +22,14 @@ export const ContactList = () => {
     <ul>
       {visibleContacts.map(({ id, name, phone }) => (
         <li key={id} className={css.list}>
-          <p className={css['list-item']}>
-            {name}: {phone}
-          </p>
-          <button className={css['btn-delete']} onClick={() => dispatch(deleteContact(id))}>
+          <div className={css['list-item-text']}>
+            <p className={css['list-item-name']}>{name}</p>
+            <p className={css['list-item-phone']}>{phone}</p>
+          </div>
+          <button
+            className={css['btn-delete']}
+            onClick={() => dispatch(deleteContact(id))}
+          >
             <MdClose size={24} />
           </button>
         </li>

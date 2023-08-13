@@ -10,6 +10,13 @@
     align-items: center;
 }
 
+.list-item-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+}
+
 .btn-delete {
   display: flex;
   align-items: center;
@@ -28,8 +35,4 @@
 .btn-delete:hover {
   background-color: #e2e5e8;
 }
-
-/* .btn-delete {
-  background-color: #bdbdbd;
-} */
 

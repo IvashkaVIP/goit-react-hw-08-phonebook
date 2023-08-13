@@ -6,48 +6,49 @@ export const contactsSlice = createSlice({
   name: 'allContacts',
   initialState: { contacts: [], isLoading: false, error: null },
   extraReducers: {
-    [fetchContacts.pending](state) {
-      state.isLoading = true;
+    [fetchContacts.pending] : (state) => {
+      state.isLoading = true
+      state.error = null;
     },
-    [fetchContacts.fulfilled] (state, action){
-      state.contacts = action.payload;
-      state.isLoading = false;
+    [fetchContacts.fulfilled] : (state, action) => {
+      state.contacts = action.payload
+      state.isLoading = false
       // console.log('fetch fulfilled: ')
       // console.log('fetch fulfilled action.payload: ', action.payload);
       // console.log('fetch fulfilled state.contacts: ', state.contacts);
     },
-    [fetchContacts.reject] (state) {
-      state.isLoading = false;
-      state.error = true;
+    [fetchContacts.rejected] : (state) => {
+      state.isLoading = false
+      state.error = true
     },
     //--------------------------------------------------------------------
-    [addContact.pending](state) {
-      state.isLoading = true;
+    [addContact.pending]: (state) => {
+      state.isLoading = true
     },
-    [addContact.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.contacts.unshift(action.payload);
+    [addContact.fulfilled] : (state, action) => {
+      state.isLoading = false
+      state.error = null
+      state.contacts.unshift(action.payload)
     },
-    [addContact.rejected](state, action) {
-      console.log('Rejected');
-      state.isLoading = false;
-      state.error = action.payload;
+    [addContact.rejected] : (state, action) => {
+      console.log('Rejected')
+      state.isLoading = false
+      state.error = action.payload
     },
-    [deleteContact.pending](state) {
-      state.isLoading = true;
+    [deleteContact.pending] : (state) => {
+      state.isLoading = true
     },
-    [deleteContact.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
+    [deleteContact.fulfilled] : (state, action) => {
+      state.isLoading = false
+      state.error = null
       const index = state.contacts.findIndex(
         contact => contact.id === action.payload.id
-      );
-      state.contacts.splice(index, 1);
+      )
+      state.contacts.splice(index, 1)
     },
-    [deleteContact.rejected](state, action) {
-      state.isLoading = false;
-      state.error = action.payload;
+    [deleteContact.rejected] : (state, action) => {
+      state.isLoading = false
+      state.error = action.payload
     },
     //---------------------------------------------------------------------
   },

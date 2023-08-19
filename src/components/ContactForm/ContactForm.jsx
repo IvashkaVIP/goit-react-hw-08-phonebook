@@ -23,6 +23,7 @@ export const ContactForm = () => {
 
   return (
     <div>
+      <h1>Phonebook</h1>
       <form onSubmit={handleSubmit} className={css.form}>
         <label className={css.label}>
           Name

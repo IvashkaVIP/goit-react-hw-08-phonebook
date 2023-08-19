@@ -1,27 +1,32 @@
-import css from './login.module.css'
+import { useDispatch } from 'react-redux';
+import * as authOperations from 'redux/auth/authOperations';
+import css from './login.module.css';
 
 export const Login = () => {
-  
+  const dispatch = useDispatch();
+
   const handleSubmit = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
-    const mail = form.elements.mail.value;
+    const email = form.elements.email.value;
     const password = form.elements.password.value;
-    console.log(mail, password);
+    console.log(email, password);
+    dispatch(authOperations.login({email, password}));
+
     form.reset();
   };
 
-    return (
-      <>
-        <h1>Log In</h1>
-        <form className={css.form} onSubmit={handleSubmit}>
-          <label>Email</label>
-          <input type="mail" name="mail" />
-          <label>Password</label>
-          <input type="password" name="password" />
+  return (
+    <>
+      <h1>Log In</h1>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <label>Email</label>
+        <input type="email" name="email" />
+        <label>Password</label>
+        <input type="password" name="password" />
 
-          <button type="submit">Log In</button>
-        </form>
-      </>
-    );
+        <button type="submit">Log In</button>
+      </form>
+    </>
+  );
 };

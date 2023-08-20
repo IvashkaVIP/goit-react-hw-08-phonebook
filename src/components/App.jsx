@@ -6,7 +6,6 @@ import { fetchContacts } from 'redux/contacts/contactsOperations';
 import { Home } from 'pages/home';
 import { Register } from 'pages/register/register';
 import { Login } from 'pages/login/login';
-import { Contacts } from 'pages/contacts';
 import { AppBar } from './AppBar/appBar';
 import css from './App.module.css';
 

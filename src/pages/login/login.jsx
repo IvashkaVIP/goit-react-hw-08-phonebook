@@ -10,8 +10,8 @@ export const Login = () => {
     const form = evt.currentTarget;
     const email = form.elements.email.value;
     const password = form.elements.password.value;
-    console.log(email, password);
-    dispatch(authOperations.login({email, password}));
+    // console.log(email, password);
+    dispatch(authOperations.logIn({email, password}));
 
     form.reset();
   };

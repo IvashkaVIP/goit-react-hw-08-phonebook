@@ -18,11 +18,17 @@ export const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(authOperations.login.fulfilled, (state, action) => {
+      .addCase(authOperations.logIn.fulfilled, (state, action) => {
         //   console.log(state, action);
           state.user = action.payload.user;
           state.token = action.payload.token;
           state.isLoggedIn = true;
+      })
+      .addCase(authOperations.logOut.fulfilled, (state) => {
+        //   console.log(state, action);
+        state.user = initialState.user
+        state.token = initialState.token
+        state.isLoggedIn = initialState.isLoggedIn
       });
   },
 });

@@ -17,14 +17,26 @@ export const registration = createAsyncThunk(
   }
 );
 
-export const login = createAsyncThunk(
+export const logIn = createAsyncThunk(
   'auth/login',
   async ({ email, password }, thunkAPI) => {
     try {
-      const response = await contactsAPI.login({
+      const response = await contactsAPI.logIn({
         email,
         password,
       });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logOut = createAsyncThunk(
+  'auth/logout',
+  async (_, thunkAPI) => {
+    try {
+      const response = await contactsAPI.logOut();
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

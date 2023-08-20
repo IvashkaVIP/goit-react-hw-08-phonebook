@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import {Route, Routes} from 'react-router-dom'
-import { useDispatch} from 'react-redux';
-import { fetchContacts } from 'redux/contacts/contactsOperations';
+// import { useDispatch} from 'react-redux';
+// import { fetchContacts } from 'redux/contacts/contactsOperations';
 
 import { Home } from 'pages/home';
 import { Register } from 'pages/register/register';

@@ -10,13 +10,7 @@ import { AppBar } from './AppBar/appBar';
 import css from './App.module.css';
 
 export const App = () => {
-  const dispatch = useDispatch();
   
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   return (
     <div className={css.container}>
       <AppBar />

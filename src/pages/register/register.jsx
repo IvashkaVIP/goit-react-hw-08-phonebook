@@ -12,7 +12,7 @@ export const Register = () => {
     const name = form.elements.name.value;
     const email = form.elements.email.value;
     const password = form.elements.password.value;
-      console.log(name, email, password);
+      // console.log(name, email, password);
       dispatch(authOperations.registration({ name, email, password }))
     form.reset();
   };

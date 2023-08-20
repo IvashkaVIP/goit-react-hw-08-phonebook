@@ -21,14 +21,11 @@ export const registration = async ({ name, email, password }) => {
 
 export const logIn = async ({ email, password }) => {
   const resp = await axios.post('users/login', { email, password });
-  console.log("logIn >>> ", resp.data.token);
   token.set(resp.data.token);
-  console.log('axios_token >>> ', axios.defaults.headers.common.Authorization);
   return resp;
 }
 
 export const logOut = async () => {
-  console.log(axios.defaults.headers.common.Authorization);
   const resp =  await axios.post('users/logout');
   token.unset();
   return resp;

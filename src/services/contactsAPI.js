@@ -30,40 +30,17 @@ export const logOut = async () => {
   token.unset();
   return resp;
 }
-//     /contacts
+//     
 export const fetchContacts = async () => {
   const resp = await axios.get('contacts');
-  console.log(resp);
+  // console.log(resp);
   return resp;
 }
 
-
-//------------------------------------------------------------
-
-export const addContact = async ({ createdAt, name, phone, id }) => {
-  const resp = await axios.post('', {
-    createdAt,
-    name,
-    phone,
-    id,
-  });
+export const addContact = async ({ name, number}) => {
+  const resp = await axios.post('contacts', { name, number });
+  // console.log(resp);
   return resp;
 };
 
-// axios.defaults.baseURL = 'https://64d743c92a017531bc13159c.mockapi.io/contacts';
-
-// export const fetchContacts = async () =>
-//   await axios.get('https://64d743c92a017531bc13159c.mockapi.io/contacts');
-export const deleteContact = async id => await axios.delete(`/${id}`, { id });
-
-// export const addContact = async ({ createdAt, name, phone, id }) => {
-//   const resp = await axios.post('', {
-//     createdAt,
-//     name,
-//     phone,
-//     id,
-//   });
-//   return resp;
-// };
-
-// export const deleteContact = async id => await axios.delete(`/${id}`, { id });
+export const deleteContact = async id => await axios.delete(`contacts/${id}`);

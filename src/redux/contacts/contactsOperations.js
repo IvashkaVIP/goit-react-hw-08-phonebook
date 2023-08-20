@@ -1,6 +1,6 @@
 import * as contactsAPI from 'services/contactsAPI';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
+
 
 export const fetchContacts = createAsyncThunk(
   'tasks/fetchContacts',
@@ -16,13 +16,11 @@ export const fetchContacts = createAsyncThunk(
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async ({ name, phone }, thunkAPI) => {
+  async ({ name, number }, thunkAPI) => {
     try {
       const response = await contactsAPI.addContact({
-        createdAt: Date.now(),
         name,
-        phone,
-        id: nanoid(),
+        number       
       });
       return response.data;
     } catch (error) {

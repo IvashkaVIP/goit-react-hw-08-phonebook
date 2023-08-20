@@ -10,11 +10,11 @@ export const ContactList = () => {
 
   return (
     <ul>
-      {visibleContacts.map(({ id, name, phone }) => (
+      {visibleContacts.map(({ id, name, number }) => (
         <li key={id} className={css.list}>
           <div className={css['list-item-wrap']}>
             <p className={css['list-item-name']}>{name}</p>
-            <p className={css['list-item-phone']}>{phone}</p>
+            <p className={css['list-item-phone']}>{number}</p>
           </div>
           <button
             className={css['btn-delete']}

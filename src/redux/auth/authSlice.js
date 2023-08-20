@@ -22,15 +22,20 @@ export const authSlice = createSlice({
       })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
         //   console.log(state, action);
-          state.user = action.payload.user;
-          state.token = action.payload.token;
-          state.isLoggedIn = true;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
       })
-      .addCase(authOperations.logOut.fulfilled, (state) => {
+      .addCase(authOperations.logOut.fulfilled, state => {
         //   console.log(state, action);
-        state.user = initialState.user
-        state.token = initialState.token
-        state.isLoggedIn = initialState.isLoggedIn
+        state.user = initialState.user;
+        state.token = initialState.token;
+        state.isLoggedIn = initialState.isLoggedIn;
+      })
+      .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
+        //   console.log(state, action);
+        state.user = action.payload;
+        state.isLoggedIn = true;
       });
   },
 });

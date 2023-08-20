@@ -44,3 +44,10 @@ export const addContact = async ({ name, number}) => {
 };
 
 export const deleteContact = async id => await axios.delete(`contacts/${id}`);
+
+export const fetchCurrentUser = async persistToken => {
+  token.set(persistToken)
+  const resp = await axios.get('users/current');
+  // console.log(resp);
+  return resp;
+} 

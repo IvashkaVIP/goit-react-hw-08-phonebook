@@ -1,5 +1,6 @@
 // import { useEffect } from 'react';
-import {Route, Routes} from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
+import { fetchCurrentUser } from 'redux/auth/authOperations';
 // import { useDispatch} from 'react-redux';
 // import { fetchContacts } from 'redux/contacts/contactsOperations';
 
@@ -8,9 +9,14 @@ import { Register } from 'pages/register/register';
 import { Login } from 'pages/login/login';
 import { AppBar } from './AppBar/appBar';
 import css from './App.module.css';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 export const App = () => {
-  
+  const dispatch = useDispatch();
+
+  useEffect(()=>{dispatch(fetchCurrentUser())},[dispatch])
+
   return (
     <div className={css.container}>
       <AppBar />

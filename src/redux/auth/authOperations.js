@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const registration = createAsyncThunk(
   'auth/register',
-  async ({name, email, password}, thunkAPI) => {
+  async ({ name, email, password }, thunkAPI) => {
     try {
       const response = await contactsAPI.registration({
         name,
@@ -32,14 +32,25 @@ export const logIn = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk(
-  'auth/logout',
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  try {
+    const response = await contactsAPI.logOut();
+    return response.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+// /users/current
+export const fetchCurrentUser = createAsyncThunk(
+  'auth/refresh',
   async (_, thunkAPI) => {
-    try {
-      const response = await contactsAPI.logOut();
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.token;
+    
+    if (!persistToken) return thunkAPI.rejectWithValue();
+
+    const response = await contactsAPI.fetchCurrentUser(persistToken);
+    // console.log(response.data);
+    return response.data;
   }
 );

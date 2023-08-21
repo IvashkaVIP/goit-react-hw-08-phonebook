@@ -4,6 +4,7 @@ import { UserMenu } from 'components/UserMenu/userMenu';
 import css from './appBar.module.css'
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth/authSelectors';
+// import { Contacts } from 'pages/contacts';
 
 
 export const AppBar = () => {
@@ -12,7 +13,7 @@ export const AppBar = () => {
     return (
       <header className={css.header}>
         <Navigation />
-        {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        {isLoggedIn ? <UserMenu/> : <AuthNav/>}
       </header>
     );
 }

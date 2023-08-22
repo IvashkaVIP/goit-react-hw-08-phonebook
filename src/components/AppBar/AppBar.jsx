@@ -1,4 +1,4 @@
-import { Navigation } from 'components/Navigation/Navigation';
+import { Navigation } from '../Navigation/Navigation';
 import { AuthNav } from 'components/AuthNav/authNav';
 import { UserMenu } from 'components/UserMenu/userMenu';
 import css from '../App.module.css'

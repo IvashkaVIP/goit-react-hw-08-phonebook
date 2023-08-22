@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
 // import { AppBar } from './AppBar/AppBar';
 import { useDispatch } from 'react-redux';
-import { Layout } from './Layout'
+import { Layout } from './Layout/Layout';
 // import { useDispatch} from 'react-redux';
 // import { fetchContacts } from 'redux/contacts/contactsOperations';
 
@@ -21,7 +21,6 @@ const ContactsPage = lazy(() => import('../pages/contacts'));
 
 // import css from './App.module.css';
 
-
 // import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 export const App = () => {
@@ -32,16 +31,15 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-          <Route path="*" element={<HomePage />} />
-        </Route>
-      </Routes>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="*" element={<HomePage />} />
+      </Route>
+    </Routes>
     // </div>
   );
 };

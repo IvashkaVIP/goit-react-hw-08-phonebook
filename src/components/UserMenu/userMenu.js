@@ -1,6 +1,7 @@
 // import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth/authSelectors';
+import css from './userMenu.module.css'
 import * as authOperations  from 'redux/auth/authOperations'
 
 export const UserMenu = () => {
@@ -15,9 +16,11 @@ export const UserMenu = () => {
 
     return (
       <>
-        <div>
-          <p>Welcome, {name}!</p>
-          <button type='button' onClick = {handleLogOut}>Log Out</button>
+        <div className={css.wrapper}>
+          <p className={css.username}>Welcome, {name}!</p>
+          <button type="button" onClick={handleLogOut}>
+            Log Out
+          </button>
         </div>
       </>
     );

@@ -1,40 +1,47 @@
-// import { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom'
+import { useEffect, lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
+// import { AppBar } from './AppBar/AppBar';
+import { useDispatch } from 'react-redux';
+import { Layout } from './Layout'
 // import { useDispatch} from 'react-redux';
 // import { fetchContacts } from 'redux/contacts/contactsOperations';
 
-import { Home } from 'pages/home/home';
-import { Register } from 'pages/register/register';
-import { Login } from 'pages/login/login';
-import { Contacts } from 'pages/contacts';
-import { AppBar } from './AppBar/appBar';
-import css from './App.module.css';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+// import { Home } from 'pages/home/home';
+// import { Register } from 'pages/register/register';
+// import { Login } from 'pages/login/login';
+// import { Contacts } from 'pages/contacts';
+
+const HomePage = lazy(() => import('../pages/home/home'));
+const RegisterPage = lazy(() => import('../pages/register/register'));
+const LoginPage = lazy(() => import('../pages/login/login'));
+const ContactsPage = lazy(() => import('../pages/contacts'));
+
+// import { AppBar } from './AppBar/AppBar';
+
+// import css from './App.module.css';
+
+
 // import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
 
-  useEffect(()=>{dispatch(fetchCurrentUser())},[dispatch])
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
 
   return (
-    <div className={css.container}>
-      <AppBar />
+    
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/contacts" element={<Contacts />} />
-
-        {/* <PrivateRoute path="/contacts">
-          <Contacts />
-        </PrivateRoute> */}
-
-        {/* <PrivateRoute >
-        </PrivateRoute> */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="*" element={<HomePage />} />
+        </Route>
       </Routes>
-    </div>
+    // </div>
   );
 };

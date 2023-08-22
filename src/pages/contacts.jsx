@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { Filter } from 'components//Filter/Filter';
 import { authSelectors } from 'redux/auth/authSelectors';
 
-export const Contacts = () => {
+export default function Contacts () {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn);
 

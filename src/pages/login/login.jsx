@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import * as authOperations from 'redux/auth/authOperations';
 import css from './login.module.css';
 
-export const Login = () => {
+export default function Login () {
   const dispatch = useDispatch();
 
   const handleSubmit = evt => {

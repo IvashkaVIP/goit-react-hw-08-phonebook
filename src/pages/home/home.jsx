@@ -2,7 +2,7 @@
 // import { useEffect } from 'react';
 import css from './home.module.css'
 
-export const Home = () => {
+export default function Home () {
   
   return (
     <>

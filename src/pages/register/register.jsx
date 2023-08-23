@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
 import css from './register.module.css'
 import * as authOperations from 'redux/auth/authOperations';
+// import { useNavigate } from 'react-router-dom';
+// import { useEffect } from 'react';
 
 export default function Register () {
 

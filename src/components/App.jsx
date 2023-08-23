@@ -4,6 +4,8 @@ import { fetchCurrentUser } from 'redux/auth/authOperations';
 // import { AppBar } from './AppBar/AppBar';
 import { useDispatch } from 'react-redux';
 import { Layout } from './Layout/Layout';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import PublicRoute from './PublicRoute/PublicRoute'
 // import { authSelectors } from 'redux/auth/authSelectors';
 // import PrivateRoute from './PrivateRoute/PrivateRoute';
 // import { useDispatch} from 'react-redux';
@@ -26,25 +28,46 @@ const ContactsPage = lazy(() => import('../pages/contacts'));
 // import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 export const App = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   // const isFetchingUser = useSelector(authSelectors.selectIsRefreshing)
   // console.log('refreshing >>> ', isFetchingUser);
 
   useEffect(() => {
-    dispatch(fetchCurrentUser())
-  }, [dispatch])
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
 
   return (
     <Routes>
-      
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-          <Route path="*" element={<HomePage />} />
-        </Route>
-      
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <RegisterPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute>
+              <ContactsPage />
+            </PrivateRoute>
+          }
+        />
+
+        <Route path="*" element={<HomePage />} />
+      </Route>
     </Routes>
     // </div>
   );

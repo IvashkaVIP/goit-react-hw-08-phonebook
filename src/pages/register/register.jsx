@@ -13,14 +13,13 @@ export default function Register () {
     const email = form.elements.email.value;
     const password = form.elements.password.value;
       // console.log(name, email, password);
-      dispatch(authOperations.registration({ name, email, password }))
+    dispatch(authOperations.registration({ name, email, password }))
     form.reset();
   };
 
     return (
       <>
-        <h1>register</h1>
-        <form className={css.form} onSubmit={handleSubmit}>
+          <form className={css.form} onSubmit={handleSubmit}>
           <label>Name</label>
           <input
             type="text"

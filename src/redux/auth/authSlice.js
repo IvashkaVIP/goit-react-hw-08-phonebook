@@ -7,6 +7,7 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
+  isRefreshing: false
 };
 
 export const authSlice = createSlice({
@@ -36,6 +37,15 @@ export const authSlice = createSlice({
         //   console.log(state, action);
         state.user = action.payload;
         state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(authOperations.fetchCurrentUser.pending, (state, action) => {
+        //   console.log(state, action);
+        state.isRefreshing = true;
+      })
+      .addCase(authOperations.fetchCurrentUser.rejected, (state, action) => {
+        //   console.log(state, action);
+        state.isRefreshing = false;
       });
   },
 });

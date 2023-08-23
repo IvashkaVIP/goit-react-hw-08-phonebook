@@ -7,7 +7,7 @@ export const Layout = () => {
   return (
     <div className={css.container}>
       <AppBar />
-      <Suspense fallback={null}>
+      <Suspense fallback={<h1>Loading</h1>}>
         <Outlet />
       </Suspense>
       {/* <Toaster position="top-right" reverseOrder={false} /> */}

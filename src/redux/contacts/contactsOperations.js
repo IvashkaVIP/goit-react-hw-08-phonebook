@@ -1,7 +1,6 @@
 import * as contactsAPI from 'services/contactsAPI';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-
 export const fetchContacts = createAsyncThunk(
   'tasks/fetchContacts',
   async (_, thunkAPI) => {
@@ -20,7 +19,7 @@ export const addContact = createAsyncThunk(
     try {
       const response = await contactsAPI.addContact({
         name,
-        number       
+        number,
       });
       return response.data;
     } catch (error) {

@@ -14,8 +14,8 @@ const handleFulfilled = state => {
   state.isError = '';
 };
 const handleRejected = (state, action) => {
-  state.isLoading = false
-  state.isError = action.payload
+  state.isLoading = false;
+  state.isError = action.payload;
 };
 
 export const utilitySlice = createSlice({

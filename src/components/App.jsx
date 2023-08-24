@@ -15,7 +15,6 @@ const LoginPage = lazy(() => import('../pages/login/login'));
 const ContactsPage = lazy(() => import('../pages/contacts'));
 
 export const App = () => {
-  
   const isToken = localStorage.getItem('persist:auth:token');
   const isRefreshing = useSelector(authSelectors.selectIsRefreshing);
   const dispatch = useDispatch();

@@ -16,8 +16,6 @@ export const Filter = () => {
         <div className={css['find-text']}> Find contacts by name</div>
         <input type="text" value={filter.payload} onChange={onChange} />
       </label>
-      {/* {isLoading && !error && <b>Request in progress...</b>}
-      {error && <b className={css.error}>Something wrong... {error}</b>} */}
-    </div>
+     </div>
   );
 };

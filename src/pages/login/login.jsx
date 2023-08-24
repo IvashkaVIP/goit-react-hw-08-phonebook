@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import * as authOperations from 'redux/auth/authOperations';
 import css from './login.module.css';
 
-export default function Login () {
+export default function Login() {
   const dispatch = useDispatch();
 
   const handleSubmit = evt => {
@@ -10,15 +10,13 @@ export default function Login () {
     const form = evt.currentTarget;
     const email = form.elements.email.value;
     const password = form.elements.password.value;
-    // console.log(email, password);
-    dispatch(authOperations.logIn({email, password}));
-
+    dispatch(authOperations.logIn({ email, password }));
     form.reset();
   };
 
   return (
     <>
-        <form className={css.form} onSubmit={handleSubmit}>
+      <form className={css.form} onSubmit={handleSubmit}>
         <label>Email</label>
         <input type="email" name="email" />
         <label>Password</label>
@@ -28,4 +26,4 @@ export default function Login () {
       </form>
     </>
   );
-};
+}

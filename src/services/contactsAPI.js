@@ -14,30 +14,30 @@ const token = {
 };
 
 export const registration = async ({ name, email, password }) => {
-  const resp = await axios.post('users/signup', { name, email, password })
+  const resp = await axios.post('users/signup', { name, email, password });
   token.set(resp.data.token);
   return resp;
-}
+};
 
 export const logIn = async ({ email, password }) => {
   const resp = await axios.post('users/login', { email, password });
   token.set(resp.data.token);
   return resp;
-}
+};
 
 export const logOut = async () => {
-  const resp =  await axios.post('users/logout');
+  const resp = await axios.post('users/logout');
   token.unset();
   return resp;
-}
-//     
+};
+//
 export const fetchContacts = async () => {
   const resp = await axios.get('contacts');
   // console.log(resp);
   return resp;
-}
+};
 
-export const addContact = async ({ name, number}) => {
+export const addContact = async ({ name, number }) => {
   const resp = await axios.post('contacts', { name, number });
   // console.log(resp);
   return resp;
@@ -46,8 +46,8 @@ export const addContact = async ({ name, number}) => {
 export const deleteContact = async id => await axios.delete(`contacts/${id}`);
 
 export const fetchCurrentUser = async persistToken => {
-  token.set(persistToken)
+  token.set(persistToken);
   const resp = await axios.get('users/current');
   // console.log(resp);
   return resp;
-} 
+};

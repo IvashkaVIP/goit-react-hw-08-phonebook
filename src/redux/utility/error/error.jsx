@@ -1,7 +1,6 @@
 import { utilitySelectors } from '../utilitySelectors';
 import { useSelector } from 'react-redux';
 import css from './error.module.css';
-// import toast, { Toaster } from 'react-hot-toast';
 
 export const Error = () => {
   const isError = useSelector(utilitySelectors.selectIsError);

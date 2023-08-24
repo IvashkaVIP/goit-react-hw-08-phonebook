@@ -17,14 +17,13 @@ const ContactsPage = lazy(() => import('../pages/contacts'));
 export const App = () => {
   
   const isToken = localStorage.getItem('persist:auth:token');
-  console.log(isToken);
   const isRefreshing = useSelector(authSelectors.selectIsRefreshing);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // isToken && dispatch(fetchCurrentUser());
+    isToken && dispatch(fetchCurrentUser());
     dispatch(fetchCurrentUser());
-  }, [dispatch]);
+  }, [dispatch, isToken]);
 
   return (
     !isRefreshing && (

@@ -45,22 +45,11 @@ export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    
     const persistToken = state.auth.token;
-
-    console.log('persist >>>> ', persistToken);
-
     if (!persistToken) {
-      // console.log(
-      //   'thunk >>>>  ',
-      //   thunkAPI.rejectWithValue('Token not present')
-      // );
-      // console.log('persisrToken >>> ', persistToken);
       return thunkAPI.rejectWithValue('');
     }
-
     const response = await contactsAPI.fetchCurrentUser(persistToken);
-    // console.log(response.data);
     return response.data;
   }
 );

@@ -5,10 +5,6 @@ import css from './error.module.css';
 
 export const Error = () => {
   const isError = useSelector(utilitySelectors.selectIsError);
-
-  console.log(isError);
-  // return (isError && (()=>toast.error('error')));
-
   return (
     isError && (
       <>
@@ -17,11 +13,3 @@ export const Error = () => {
     )
   );
 };
-
-// const persistConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['token'],
-// };
-
-// export const persistedAuth = persistReducer(persistConfig, authSlice.reducer);

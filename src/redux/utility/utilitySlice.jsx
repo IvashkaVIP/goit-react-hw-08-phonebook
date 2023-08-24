@@ -7,14 +7,13 @@ const initialState = {
 
 const handlePending = state => {
   state.isLoading = true;
-  state.isError = null;
+  state.isError = '';
 };
 const handleFulfilled = state => {
   state.isLoading = false;
-  state.isError = null;
+  state.isError = '';
 };
 const handleRejected = (state, action) => {
-  console.log('action >>>',action.payload)
   state.isLoading = false
   state.isError = action.payload
 };

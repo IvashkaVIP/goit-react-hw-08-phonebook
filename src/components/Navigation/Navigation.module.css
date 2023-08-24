@@ -6,7 +6,7 @@
   color: #2a363b;
 }
 
-.link:hover {
+.link:hover, .link:focus{
   color: #e84a5f;
 }
 

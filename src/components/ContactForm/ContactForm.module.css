@@ -13,11 +13,11 @@
 
 .label {
   font-style: italic;
+
 }
 
 .input {
-  margin-top: 5px;
-  margin-left: 10px;
+  margin: 10px;
 }
 
 .btn {
@@ -35,3 +35,19 @@
   background-color: #1976d2;
   color: #fff;
 }
+
+@media (max-width: 900px) {
+  .form {
+  display: block;
+}
+
+}
+
+@media (max-width: 800px) {
+  .form, .label, .input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+}
+

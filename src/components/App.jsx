@@ -1,5 +1,5 @@
 import { useEffect, lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { Layout } from './Layout/Layout';
@@ -57,7 +57,7 @@ export const App = () => {
               }
             />
 
-            <Route path="*" element={<HomePage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
         <Error />

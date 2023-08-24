@@ -12,8 +12,7 @@ export const Error = () => {
   return (
     isError && (
       <>
-        <h1 className={css.error}>.......Error ....... Error .........</h1>
-        {/* <h1 className={css.error}>{isError}</h1> */}
+        <h2 className={css.error}>{isError}</h2>
       </>
     )
   );

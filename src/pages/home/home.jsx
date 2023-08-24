@@ -4,7 +4,7 @@ import css from './home.module.css'
 
 import toast, { Toaster } from 'react-hot-toast';
 // const notify = () => toast('Here is your toast.');
-const notify = () => toast.success('Here is your toast.');
+// const notify = () => toast.success('Here is your toast.');
 
 
 export default function Home () {

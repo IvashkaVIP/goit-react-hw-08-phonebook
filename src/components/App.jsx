@@ -16,14 +16,15 @@ const ContactsPage = lazy(() => import('../pages/contacts'));
 
 export const App = () => {
   
-  const isToken = localStorage.getItem('persist:auth');
-  // const isToken = useSelector(authSelectors.selectToken);
+  const isToken = localStorage.getItem('persist:auth:token');
+  console.log(isToken);
   const isRefreshing = useSelector(authSelectors.selectIsRefreshing);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    isToken && dispatch(fetchCurrentUser());
-  }, [dispatch, isToken]);
+    // isToken && dispatch(fetchCurrentUser());
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
 
   return (
     !isRefreshing && (
@@ -32,7 +33,7 @@ export const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route
-              path="/register"
+              path="register"
               element={
                 <PublicRoute>
                   <RegisterPage />
@@ -40,7 +41,7 @@ export const App = () => {
               }
             />
             <Route
-              path="/login"
+              path="login"
               element={
                 <PublicRoute>
                   <LoginPage />
@@ -49,7 +50,7 @@ export const App = () => {
             />
 
             <Route
-              path="/contacts"
+              path="contacts"
               element={
                 <PrivateRoute>
                   <ContactsPage />

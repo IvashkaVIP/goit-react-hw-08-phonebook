@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isError: null,
+  isError: '',
   isLoading: false,
 };
 
@@ -16,7 +16,7 @@ const handleFulfilled = state => {
 const handleRejected = (state, action) => {
   console.log('action >>>',action)
   state.isLoading = false
-  state.isError = action.error
+  state.isError = action.payload.error
 };
 
 export const utilitySlice = createSlice({

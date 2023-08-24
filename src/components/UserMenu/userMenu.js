@@ -18,7 +18,7 @@ export const UserMenu = () => {
       <>
         <div className={css.wrapper}>
           <p className={css.username}>Welcome, {name}!</p>
-          <button type="button" onClick={handleLogOut}>
+          <button className={css.btn}type="button" onClick={handleLogOut}>
             Log Out
           </button>
         </div>

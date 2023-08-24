@@ -1,4 +1,6 @@
   .container {
+  text-align: center;
+  margin-left: auto;
   background-color: rgb(255, 246, 222);
   max-width: 70%;
   /* min-height: calc(100vh - 200px); */

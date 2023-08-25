@@ -21,6 +21,11 @@ const handleRejected = (state, action) => {
 export const utilitySlice = createSlice({
   name: 'utility',
   initialState,
+  reducers: {
+    resetError(state) {
+      state.isError = '';
+    }
+  },
   extraReducers: builder => {
     builder
       .addMatcher(({ type }) => type.endsWith('/pending'), handlePending)

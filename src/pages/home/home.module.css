@@ -4,3 +4,12 @@
     margin-bottom: 10px;
     color: brown;
 }
+.link{  
+    color:rgb(45, 81, 244);
+    text-decoration: none;}
+
+.link:hover {
+    color: rgb(112, 129, 255);
+    
+    
+}

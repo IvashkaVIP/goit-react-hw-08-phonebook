@@ -33,3 +33,5 @@ export const utilitySlice = createSlice({
       .addMatcher(({ type }) => type.endsWith('/rejected'), handleRejected);
   },
 });
+
+export const { resetError } = utilitySlice.actions;

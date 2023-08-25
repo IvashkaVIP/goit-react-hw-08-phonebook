@@ -19,6 +19,7 @@ export default function Register() {
       <form className={css.form} onSubmit={handleSubmit}>
         <label>Name</label>
         <input
+          className={css.input}
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -27,9 +28,15 @@ export default function Register() {
         />
 
         <label>Email</label>
-        <input type="email" name="email" />
+        <input
+          className={css.input}
+          type="email"
+          name="email" />
         <label>Password</label>
-        <input type="password" name="password" />
+        <input
+          className={css.input}
+          type="password"
+          name="password" />
         <button type="submit">Register</button>
       </form>
     </>

@@ -18,9 +18,9 @@ export default function Login() {
     <>
       <form className={css.form} onSubmit={handleSubmit}>
         <label>Email</label>
-        <input type="email" name="email" />
+        <input className={css.input} type="email" name="email" />
         <label>Password</label>
-        <input type="password" name="password" />
+        <input className={css.input} type="password" name="password" />
 
         <button type="submit">Log In</button>
       </form>

@@ -14,7 +14,7 @@ export const Filter = () => {
       <h1>Contacts </h1>
       <label className={css.find}>
         <div className={css['find-text']}> Find contacts by name</div>
-        <input type="text" value={filter.payload} onChange={onChange} />
+        <input className={css.input} type="text" value={filter.payload} onChange={onChange} />
       </label>
      </div>
   );

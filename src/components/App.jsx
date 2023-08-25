@@ -8,7 +8,7 @@ import PublicRoute from './PublicRoute/PublicRoute';
 import { Error } from '../redux/utility/error/error';
 import { Loader } from 'redux/utility/loader/loader';
 import { authSelectors } from 'redux/auth/authSelectors';
-import { utilitySlice } from 'redux/utility/utilitySlice';
+import { resetError } from 'redux/utility/utilitySlice';
 
 const HomePage = lazy(() => import('../pages/home/home'));
 const RegisterPage = lazy(() => import('../pages/register/register'));
@@ -27,8 +27,8 @@ export const App = () => {
   }, [dispatch, isToken]);
 
   useEffect(() => {
-    dispatch(utilitySlice.actions.resetError());
-  }, [currentLocation.key,dispatch]);
+    dispatch(resetError());
+  }, [dispatch, currentLocation.key]);
 
   return (
     !isRefreshing && (

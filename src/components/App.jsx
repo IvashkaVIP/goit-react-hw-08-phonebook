@@ -28,8 +28,8 @@ export const App = () => {
 
   useEffect(() => {
     isError && dispatch(resetError());
-  }, [dispatch, isError,currentLocation.key]);
-
+  }, [dispatch, isError, currentLocation.key]);
+  
   return (
     !isRefreshing && (
       <div>

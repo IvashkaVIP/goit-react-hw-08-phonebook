@@ -40,11 +40,11 @@ export const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(authOperations.fetchCurrentUser.pending, (state, action) => {
-        //   console.log(state, action);
+        // console.log('Pending  ',state, action);
         state.isRefreshing = true;
       })
       .addCase(authOperations.fetchCurrentUser.rejected, (state, action) => {
-        //   console.log(state, action);
+        // console.log('Rejected',state, action);
         state.isRefreshing = false;
       });
   },

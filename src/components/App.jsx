@@ -9,7 +9,6 @@ import { Error } from '../redux/utility/error/error';
 import { Loader } from 'redux/utility/loader/loader';
 import { authSelectors } from 'redux/auth/authSelectors';
 import { resetError } from 'redux/utility/utilitySlice';
-import { utilitySelectors } from 'redux/utility/utilitySelectors';
 
 const HomePage = lazy(() => import('../pages/home/home'));
 const RegisterPage = lazy(() => import('../pages/register/register'));
@@ -18,7 +17,6 @@ const ContactsPage = lazy(() => import('../pages/contacts'));
 
 export const App = () => {
   const isRefreshing = useSelector(authSelectors.selectIsRefreshing);
-  const isError = useSelector(utilitySelectors.selectIsError);
   const currentLocation = useLocation();
   const dispatch = useDispatch();
 
@@ -29,8 +27,9 @@ export const App = () => {
   }, [dispatch]);
 
  useEffect(() => {
-   isError && dispatch(resetError());
- }, [dispatch, isError, currentLocation.key]);
+   dispatch(resetError());
+ }, [dispatch, currentLocation.key]);
+  
   return (
     !isRefreshing && (
       <div>

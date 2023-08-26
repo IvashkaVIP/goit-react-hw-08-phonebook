@@ -22,14 +22,15 @@ export const App = () => {
   const currentLocation = useLocation();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchCurrentUser());
+    // const isToken = localStorage.getItem('persist:auth:token');
+
+ useEffect(() => {
+   dispatch(fetchCurrentUser());
   }, [dispatch]);
 
-  useEffect(() => {
-    isError && dispatch(resetError());
-  }, [dispatch, isError, currentLocation.key]);
-  
+ useEffect(() => {
+   isError && dispatch(resetError());
+ }, [dispatch, isError, currentLocation.key]);
   return (
     !isRefreshing && (
       <div>
@@ -37,28 +38,31 @@ export const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route
-              path="register"
+              path="/register"
               element={
-                <PublicRoute>
-                  <RegisterPage />
-                </PublicRoute>
+                <PublicRoute
+                  redirectTo="/contacts"
+                  component={<RegisterPage />}
+                />
               }
             />
             <Route
-              path="login"
+              path="/login"
               element={
-                <PublicRoute>
-                  <LoginPage />
-                </PublicRoute>
+                <PublicRoute
+                  redirectTo="/contacts"
+                  component={<LoginPage />}
+                />
               }
             />
 
             <Route
               path="contacts"
               element={
-                <PrivateRoute>
-                  <ContactsPage />
-                </PrivateRoute>
+               <PrivateRoute
+                  redirectTo="/login"
+                  component={<ContactsPage />}
+                />
               }
             />
 

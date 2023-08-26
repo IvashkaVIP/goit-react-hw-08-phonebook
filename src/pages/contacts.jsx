@@ -10,8 +10,13 @@ export default function Contacts() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.selectIsLoggedIn);
 
+  // useEffect(() => {
+  //   if (isLoggedIn) dispatch(fetchContacts());
+    
+  // }, [dispatch, isLoggedIn]);
+
   useEffect(() => {
-    if (isLoggedIn) dispatch(fetchContacts());
+    dispatch(fetchContacts());
   }, [dispatch, isLoggedIn]);
 
   return (

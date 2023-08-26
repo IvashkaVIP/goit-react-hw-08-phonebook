@@ -1,5 +1,5 @@
 import { useEffect, lazy } from 'react';
-import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { Layout } from './Layout/Layout';
@@ -8,7 +8,7 @@ import PublicRoute from './PublicRoute/PublicRoute';
 import { Error } from '../redux/utility/error/error';
 import { Loader } from 'redux/utility/loader/loader';
 import { authSelectors } from 'redux/auth/authSelectors';
-import { resetError } from 'redux/utility/utilitySlice';
+
 
 const HomePage = lazy(() => import('../pages/home/home'));
 const RegisterPage = lazy(() => import('../pages/register/register'));
@@ -17,19 +17,12 @@ const ContactsPage = lazy(() => import('../pages/contacts'));
 
 export const App = () => {
   const isRefreshing = useSelector(authSelectors.selectIsRefreshing);
-  const currentLocation = useLocation();
   const dispatch = useDispatch();
-
-    // const isToken = localStorage.getItem('persist:auth:token');
 
  useEffect(() => {
    dispatch(fetchCurrentUser());
   }, [dispatch]);
 
- useEffect(() => {
-   dispatch(resetError());
- }, [dispatch, currentLocation.key]);
-  
   return (
     !isRefreshing && (
       <div>
